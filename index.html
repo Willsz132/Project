@@ -1,0 +1,180 @@
+<!--
+  index.html
+  Exemplo de site estático para trabalho da faculdade
+  Instruções:
+  - Salve este arquivo como `index.html` e abra no navegador.
+  - Para publicar: faça push para GitHub e ative GitHub Pages, ou hospede em qualquer servidor estático.
+  - O formulário de contato é demonstrativo (sem backend). Para enviar mensagens, conecte a um serviço (Formspree, Netlify Forms) ou implemente um endpoint.
+  - Personalize textos, cores e imagens conforme necessário.
+-->
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Projeto — Trabalho da Faculdade</title>
+  <meta name="description" content="Exemplo de site estático para apresentação de trabalho da faculdade">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!-- pequeno placeholder -->
+  <style>
+    :root{
+      --bg:#0f1724; --card:#111827; --muted:#9ca3af; --accent:#7c3aed; --glass: rgba(255,255,255,0.04);
+      --maxw:1100px; --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#071129 0%, #0b1220 100%); color:#e6eef8}
+    a{color:var(--accent);text-decoration:none}
+    .wrap{max-width:var(--maxw);margin:32px auto;padding:24px}
+
+    /* Header / Nav */
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700}
+    nav ul{display:flex;gap:20px;list-style:none;padding:0;margin:0}
+    nav button{background:transparent;border:1px solid var(--glass);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:center;margin-bottom:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:var(--radius);box-shadow:0 6px 24px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    h1{margin:0 0 12px;font-size:28px}
+    p.lead{margin:0;color:var(--muted)}
+
+    /* Project cards */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px}
+    .proj{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03)}
+    .proj h3{margin:0 0 6px;font-size:18px}
+    .tag{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:rgba(255,255,255,0.03);color:var(--muted)}
+
+    /* Skills */
+    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .skill{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    /* Contact */
+    form{display:grid;gap:10px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:10px;color:inherit;outline:none}
+    textarea{min-height:110px;resize:vertical}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent),#06b6d4);border:none;color:white;font-weight:600;cursor:pointer}
+
+    footer{margin-top:28px;color:var(--muted);font-size:14px;text-align:center}
+
+    /* Responsive */
+    @media (max-width:880px){.hero{grid-template-columns:1fr;}.brand .logo{width:40px;height:40px}}
+
+    /* small util */
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">T</div>
+        <div>
+          <div style="font-weight:700">Trabalho Faculdade</div>
+          <div class="muted" style="font-size:13px">Disciplina: Desenvolvimento Web — 2025</div>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1>Nome do Projeto — Resumo Executivo</h1>
+        <p class="lead">Breve descrição do trabalho — objetivo, método e conclusão em 1-2 frases. Use este espaço para capturar a atenção do avaliador.</p>
+
+        <h3 style="margin-top:18px">Principais pontos</h3>
+        <ul class="muted">
+          <li>Objetivo: Desenvolver um protótipo de site estático para apresentação.</li>
+          <li>Método: HTML, CSS e JavaScript (sem backend).</li>
+          <li>Resultado: Site responsivo com seções de apresentação e contato.</li>
+        </ul>
+
+        <div style="margin-top:14px">
+          <a class="btn" href="#projetos">Ver projetos</a>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3>Equipe</h3>
+        <p class="muted" style="margin:6px 0">Aluno: João Silva<br>Matéria: INF123 — Prof.ª Maria</p>
+        <h4 style="margin-top:12px">Tópicos</h4>
+        <div class="skills">
+          <span class="skill">HTML5</span>
+          <span class="skill">CSS3</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">Acessibilidade</span>
+        </div>
+      </aside>
+    </section>
+
+    <section id="sobre" class="card">
+      <h2>Sobre o Trabalho</h2>
+      <p class="muted">Descreva aqui o problema estudado, a justificativa e os objetivos específicos. Exemplo: Analisar a usabilidade de um protótipo de site institucional e propor melhorias simples de navegação.</p>
+    </section>
+
+    <section id="projetos" style="margin-top:16px">
+      <h2 style="margin:0 0 10px">Projetos / Entregáveis</h2>
+      <div class="projects">
+        <article class="proj">
+          <h3>Protótipo de Site</h3>
+          <div class="muted">Versão HTML/CSS responsiva para apresentação.</div>
+          <div style="margin-top:8px"><span class="tag">Entrega 1</span></div>
+        </article>
+
+        <article class="proj">
+          <h3>Relatório Técnico</h3>
+          <div class="muted">PDF com metodologia, resultados e referências.</div>
+          <div style="margin-top:8px"><span class="tag">Entrega 2</span></div>
+        </article>
+
+        <article class="proj">
+          <h3>Apresentação</h3>
+          <div class="muted">Slides para defesa do trabalho (PowerPoint/Google Slides).</div>
+          <div style="margin-top:8px"><span class="tag">Entrega 3</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section style="margin-top:16px" class="card">
+      <h2>Metodologia</h2>
+      <p class="muted">Explique métodos, ferramentas e etapas: pesquisa bibliográfica, prototipação, testes de usabilidade com 5 usuários, coleta e análise de resultados, conclusão e propostas futuras.</p>
+    </section>
+
+    <section id="contato" style="margin-top:16px" class="card">
+      <h2>Contato</h2>
+      <p class="muted">Use o formulário abaixo para simular envio de mensagem ao responsável pelo trabalho.</p>
+      <form onsubmit="event.preventDefault();handleSubmit();">
+        <input id="name" placeholder="Seu nome" required>
+        <input id="email" type="email" placeholder="seu@email.com" required>
+        <textarea id="msg" placeholder="Mensagem" required></textarea>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="btn" type="submit">Enviar (simulado)</button>
+          <span id="status" class="muted" style="font-size:13px"></span>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <div>© 2025 — Trabalho Faculdade · Exemplo estático</div>
+      <div style="margin-top:6px">Sugestão de publicação: GitHub Pages, Netlify ou Vercel.</div>
+    </footer>
+  </div>
+
+  <script>
+    function handleSubmit(){
+      const name = document.getElementById('name').value.trim();
+      const status = document.getElementById('status');
+      if(!name){status.textContent='Preencha o nome';return}
+      // demonstração local — personalize para integrar com Formspree/Netlify/etc.
+      status.textContent = 'Mensagem preparada — sem envio (demo).';
+      setTimeout(()=>status.textContent='Mensagem (simulada) enviada ✅',900);
+    }
+  </script>
+</body>
+</html>
