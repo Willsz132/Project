@@ -1,180 +1,165 @@
-<!--
-  index.html
-  Exemplo de site estático para trabalho da faculdade
-  Instruções:
-  - Salve este arquivo como `index.html` e abra no navegador.
-  - Para publicar: faça push para GitHub e ative GitHub Pages, ou hospede em qualquer servidor estático.
-  - O formulário de contato é demonstrativo (sem backend). Para enviar mensagens, conecte a um serviço (Formspree, Netlify Forms) ou implemente um endpoint.
-  - Personalize textos, cores e imagens conforme necessário.
--->
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Projeto — Trabalho da Faculdade</title>
-  <meta name="description" content="Exemplo de site estático para apresentação de trabalho da faculdade">
-  <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!-- pequeno placeholder -->
+  <title>Solo Levelling</title>
   <style>
-    :root{
-      --bg:#0f1724; --card:#111827; --muted:#9ca3af; --accent:#7c3aed; --glass: rgba(255,255,255,0.04);
+    /* Variavel Global */
+    :root{  
       --maxw:1100px; --radius:14px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial; background:linear-gradient(180deg,#071129 0%, #0b1220 100%); color:#e6eef8}
-    a{color:var(--accent);text-decoration:none}
-    .wrap{max-width:var(--maxw);margin:32px auto;padding:24px}
+    /* Configuração pro body */
+    html,body { 
+      scroll-behavior: smooth;
+      height:100%;
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+      background: #0b1220 ;
+      color:#e6eef8
+    }
+      /* Configurações do botão */
+    nav ul {
+      display:flex;
+      gap:10px;
+      list-style:none;
+      padding:0;
+      margin:0
+    }
+    /* Estilo da pagina */
+    .wrap {
+      max-width:var(--maxw);
+      margin:32px auto;
+      padding:24px
+    }
 
-    /* Header / Nav */
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700}
-    nav ul{display:flex;gap:20px;list-style:none;padding:0;margin:0}
-    nav button{background:transparent;border:1px solid var(--glass);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+    header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:28px}
 
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:center;margin-bottom:28px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:var(--radius);box-shadow:0 6px 24px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
-    h1{margin:0 0 12px;font-size:28px}
-    p.lead{margin:0;color:var(--muted)}
+    .logo {
+      display:flex;
+      gap:12px;
+      align-items:center}
 
-    /* Project cards */
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px}
-    .proj{padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border:1px solid rgba(255,255,255,0.03)}
-    .proj h3{margin:0 0 6px;font-size:18px}
-    .tag{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;background:rgba(255,255,255,0.03);color:var(--muted)}
+    .text {
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:15px;
+      margin-bottom:15px}
 
-    /* Skills */
-    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-    .skill{background:var(--glass);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+    .image {
+      background:linear-gradient(180deg, rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+      padding:20px;
+      border-radius:var(--radius);
+      box-shadow:0 6px 24px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03)
+    }
 
-    /* Contact */
-    form{display:grid;gap:10px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:10px;color:inherit;outline:none}
-    textarea{min-height:110px;resize:vertical}
-    .btn{display:inline-block;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent),#06b6d4);border:none;color:white;font-weight:600;cursor:pointer}
+    h1 {
+      margin:0 0 12px;
+      font-size:28px
+    }
+    li button {
+      padding: 8px 12px;
+      background: #191480;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
 
-    footer{margin-top:28px;color:var(--muted);font-size:14px;text-align:center}
+    li button:hover {
+      background: #4338ca;
+    }
 
-    /* Responsive */
-    @media (max-width:880px){.hero{grid-template-columns:1fr;}.brand .logo{width:40px;height:40px}}
+        /* Animação para os quadrados aumentar o tamanho */
+     .image {
+      position: relative;
+      overflow: visible;
+      transition: transform 0.25s ease, image-shadow 0.25s ease;
+    }
+    .image:hover {
+     transform: scale(1.03);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+    }
 
-    /* small util */
-    .muted{color:var(--muted)}
+    footer{
+      margin-top:28px;
+      font-size:14px;text-align:center
+    }
+
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <div class="brand">
-        <div class="logo">T</div>
+      <div class="logo">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Solo_Leveling_English_logo.svg" alt="Logo Solo Levelling" style="width:80px;height:80px;margin-top:8px">
         <div>
-          <div style="font-weight:700">Trabalho Faculdade</div>
-          <div class="muted" style="font-size:13px">Disciplina: Desenvolvimento Web — 2025</div>
+          <div style="font-weight:700">Solo Levelling</div>
+          <div style="font-size:13px">Apresentação: Sung Jin woo e seus poderes</div>
         </div>
       </div>
       <nav>
         <ul>
-          <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#projetos">Projetos</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><button onclick="location.href='#sung'">Sung</button></li>
+           <li><button onclick="location.href='#belion'">belion</button></li>
+          <li><button onclick="location.href='#sombras'">Sombras</button></li>
         </ul>
       </nav>
     </header>
 
-    <section class="hero">
-      <div class="card">
-        <h1>Nome do Projeto — Resumo Executivo</h1>
-        <p class="lead">Breve descrição do trabalho — objetivo, método e conclusão em 1-2 frases. Use este espaço para capturar a atenção do avaliador.</p>
-
+    <section id="sung" class="text">
+      <div class="image"> 
+        <h1>Sung Jin Woo</h1>
+        <p>Originalmente um caçador de Rank E notoriamente fraco , Jinwoo teve a chance de sua vida ao ser selecionado como o Jogador do Sistema , o que lhe concedeu a habilidade única de aumentar seu poder sem restrições. Como resultado, aproveitando as oportunidades oferecidas pelo Sistema, Jinwoo ascendeu ao poder como o maior caçador da humanidade.</p>
         <h3 style="margin-top:18px">Principais pontos</h3>
-        <ul class="muted">
-          <li>Objetivo: Desenvolver um protótipo de site estático para apresentação.</li>
-          <li>Método: HTML, CSS e JavaScript (sem backend).</li>
-          <li>Resultado: Site responsivo com seções de apresentação e contato.</li>
+        <ul> 
+          <li>Superforça</li>
+          <li>Velocidade superior à da Luz</li>
+          <li>Regeneração</li>
+          <li>Controle sobre sombras</li>
         </ul>
 
-        <div style="margin-top:14px">
-          <a class="btn" href="#projetos">Ver projetos</a>
-        </div>
       </div>
 
-      <aside class="card">
-        <h3>Equipe</h3>
-        <p class="muted" style="margin:6px 0">Aluno: João Silva<br>Matéria: INF123 — Prof.ª Maria</p>
-        <h4 style="margin-top:12px">Tópicos</h4>
-        <div class="skills">
-          <span class="skill">HTML5</span>
-          <span class="skill">CSS3</span>
-          <span class="skill">JavaScript</span>
-          <span class="skill">Acessibilidade</span>
-        </div>
+      <aside class="image">
+        <img src="https://i.pinimg.com/736x/90/58/39/905839f48093c7a258bf600fa0567893.jpg" alt="Sung" style="width:100%;border-radius:12px;margin-bottom:12px">
       </aside>
     </section>
 
-    <section id="sobre" class="card">
-      <h2>Sobre o Trabalho</h2>
-      <p class="muted">Descreva aqui o problema estudado, a justificativa e os objetivos específicos. Exemplo: Analisar a usabilidade de um protótipo de site institucional e propor melhorias simples de navegação.</p>
-    </section>
+       <section id="belion" class="text">
+      <div class="image">
+        <h1>Marechal Belion - Sua principal Sombra</h1>
+        <p>Bellion é um guerreiro das sombras grande e musculoso, com dois pares de asas negras nas costas, armadura negra irregular, olhos brancos sem expressão e pele roxa brilhante, além de um capacete com um único chifre na cabeça.</p>
+        <h3 style="margin-top:18px">Poderes Belion</h3>
+        <ul class="muted">
+          <li>Força Imensa: Foi capaz de repelir sem esforço os ataques de Beru e esmagá-lo contra o chão com força suficiente para fazê-lo tossir sangue</li>
+          <br><li>Velocidade Imensa: Bellion consegue se mover a velocidades imensas, como demonstrado pela facilidade com que acompanhou os movimentos de Beru e contra-atacou seus golpes durante o treino.</li>
+          <br><li>Maestria com Espadas: Bellion demonstrou possuir um alto grau de habilidade com espadas, embora tenha sido observado que Igris é um espadachim melhor.</li>
+        </ul>
 
-    <section id="projetos" style="margin-top:16px">
-      <h2 style="margin:0 0 10px">Projetos / Entregáveis</h2>
-      <div class="projects">
-        <article class="proj">
-          <h3>Protótipo de Site</h3>
-          <div class="muted">Versão HTML/CSS responsiva para apresentação.</div>
-          <div style="margin-top:8px"><span class="tag">Entrega 1</span></div>
-        </article>
-
-        <article class="proj">
-          <h3>Relatório Técnico</h3>
-          <div class="muted">PDF com metodologia, resultados e referências.</div>
-          <div style="margin-top:8px"><span class="tag">Entrega 2</span></div>
-        </article>
-
-        <article class="proj">
-          <h3>Apresentação</h3>
-          <div class="muted">Slides para defesa do trabalho (PowerPoint/Google Slides).</div>
-          <div style="margin-top:8px"><span class="tag">Entrega 3</span></div>
-        </article>
       </div>
+
+      <aside class="image">
+        <img src="https://preview.redd.it/the-top-15-shadows-in-jinwoos-army-decided-by-yall-v0-jue4tvtaztue1.jpg?width=640&crop=smart&auto=webp&s=7c0880ed0f2c0cb5674e66b3cfac9d6b30bdbf73" alt="belion" style="width:100%;border-radius:12px;margin-bottom:12px">
+      </aside>
     </section>
 
-    <section style="margin-top:16px" class="card">
-      <h2>Metodologia</h2>
-      <p class="muted">Explique métodos, ferramentas e etapas: pesquisa bibliográfica, prototipação, testes de usabilidade com 5 usuários, coleta e análise de resultados, conclusão e propostas futuras.</p>
+    <section id="sombras" class="image">
+      <h2>Sombras</h2>
+      <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id orci ut magna tristique aliquam. Sed cursus dictum libero nec imperdiet. Suspendisse vulputate lorem quis augue porttitor, eu mollis felis viverra. Pellentesque posuere diam a leo congue imperdiet. Morbi tortor eros, mattis sit amet euismod ac, feugiat in sem. Nulla quam lacus, sodales vel viverra in, vehicula in lacus. Sed condimentum et metus non vulputate. Fusce facilisis, elit at sodales eleifend, ipsum nisi efficitur velit, ut tempus lectus mauris sit amet justo.</p>
+        <ul>
+          <li>Lorem ipsum dolor sit amet.</li>
+        </ul>  
     </section>
-
-    <section id="contato" style="margin-top:16px" class="card">
-      <h2>Contato</h2>
-      <p class="muted">Use o formulário abaixo para simular envio de mensagem ao responsável pelo trabalho.</p>
-      <form onsubmit="event.preventDefault();handleSubmit();">
-        <input id="name" placeholder="Seu nome" required>
-        <input id="email" type="email" placeholder="seu@email.com" required>
-        <textarea id="msg" placeholder="Mensagem" required></textarea>
-        <div style="display:flex;gap:10px;align-items:center">
-          <button class="btn" type="submit">Enviar (simulado)</button>
-          <span id="status" class="muted" style="font-size:13px"></span>
-        </div>
-      </form>
-    </section>
-
     <footer>
-      <div>© 2025 — Trabalho Faculdade · Exemplo estático</div>
-      <div style="margin-top:6px">Sugestão de publicação: GitHub Pages, Netlify ou Vercel.</div>
+      <div>Sung Jing: Eu sou o único que pode me derrotar</div>
     </footer>
   </div>
-
-  <script>
-    function handleSubmit(){
-      const name = document.getElementById('name').value.trim();
-      const status = document.getElementById('status');
-      if(!name){status.textContent='Preencha o nome';return}
-      // demonstração local — personalize para integrar com Formspree/Netlify/etc.
-      status.textContent = 'Mensagem preparada — sem envio (demo).';
-      setTimeout(()=>status.textContent='Mensagem (simulada) enviada ✅',900);
-    }
-  </script>
 </body>
 </html>
